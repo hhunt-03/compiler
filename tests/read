@@ -1,0 +1,6 @@
+int array[10];
+
+int main(){
+    read(array[0]);
+    print(array[0]);
+}

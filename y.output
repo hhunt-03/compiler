@@ -1,0 +1,142 @@
+Terminals which are not used
+
+   Ident
+   Int
+   IF
+   EQ
+
+
+Grammar
+
+    0 $accept: Prog $end
+
+    1 Prog: StmtSeq
+
+    2 StmtSeq: Stmt
+    3        | /* empty */
+
+    4 Stmt: Write Expr ';'
+
+    5 Expr: Term
+
+    6 Term: Factor
+
+    7 Factor: IntLit
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+';' (59) 4
+error (256)
+Ident (258)
+IntLit (259) 7
+Int (260)
+Write (261) 4
+IF (262)
+EQ (263)
+
+
+Nonterminals, with rules where they appear
+
+$accept (10)
+    on left: 0
+Prog (11)
+    on left: 1, on right: 0
+StmtSeq (12)
+    on left: 2 3, on right: 1
+Stmt (13)
+    on left: 4, on right: 2
+Expr (14)
+    on left: 5, on right: 4
+Term (15)
+    on left: 6, on right: 5
+Factor (16)
+    on left: 7, on right: 6
+
+
+state 0
+
+    0 $accept: . Prog $end
+
+    Write  shift, and go to state 1
+
+    $default  reduce using rule 3 (StmtSeq)
+
+    Prog     go to state 2
+    StmtSeq  go to state 3
+    Stmt     go to state 4
+
+
+state 1
+
+    4 Stmt: Write . Expr ';'
+
+    IntLit  shift, and go to state 5
+
+    Expr    go to state 6
+    Term    go to state 7
+    Factor  go to state 8
+
+
+state 2
+
+    0 $accept: Prog . $end
+
+    $end  shift, and go to state 9
+
+
+state 3
+
+    1 Prog: StmtSeq .
+
+    $default  reduce using rule 1 (Prog)
+
+
+state 4
+
+    2 StmtSeq: Stmt .
+
+    $default  reduce using rule 2 (StmtSeq)
+
+
+state 5
+
+    7 Factor: IntLit .
+
+    $default  reduce using rule 7 (Factor)
+
+
+state 6
+
+    4 Stmt: Write Expr . ';'
+
+    ';'  shift, and go to state 10
+
+
+state 7
+
+    5 Expr: Term .
+
+    $default  reduce using rule 5 (Expr)
+
+
+state 8
+
+    6 Term: Factor .
+
+    $default  reduce using rule 6 (Term)
+
+
+state 9
+
+    0 $accept: Prog $end .
+
+    $default  accept
+
+
+state 10
+
+    4 Stmt: Write Expr ';' .
+
+    $default  reduce using rule 4 (Stmt)

@@ -1,0 +1,10 @@
+int x;
+
+int foo(){
+    return 123;
+}
+
+int main(){
+    x = foo();
+    print(x);
+}

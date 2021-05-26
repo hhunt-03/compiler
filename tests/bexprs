@@ -1,0 +1,26 @@
+int main(){
+    if( 1 != 2 ){
+        print(1);
+    }
+
+    printlines(1);
+    if( 1 < 2 ){
+        print(2);
+    }
+
+    printlines(1);
+    if( 2 > 1 ){
+        print(3);
+    }
+
+    printlines(1);
+    if( 1 <= 2 ){
+        print(4);
+    }
+
+    printlines(1);
+    if( 1 >= 2 ){
+        print(5);
+    }
+
+}
